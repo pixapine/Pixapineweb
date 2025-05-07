@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Pixapine</title>
+<meta property="og:title" content="Pixapine" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pixapine is a digital marketing agency based in India, helping businesses grow online with expert SEO and marketing services." />
+<meta name="keywords" content="pixapine, digital marketing India, SEO services India, social media marketing, online marketing India" />
+
+
+
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3B64EA',secondary:'#F97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+ <!-- ✅ Structured Data for Logo in Search Results -->
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Pixapine",
+    "url": "https://pixapine.in",
+    "logo": "https://pixapine.in/pixapine-logo.png",
+    "sameAs": [
+      "https://facebook.com/pixapine",
+      "https://instagram.com/pixapine"
+    ]
+  }
+  </script>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@600&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+font-family: 'Chillax', sans-serif;
+scroll-behavior: smooth;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+.animate-scaleIn {
+  animation: scaleIn 0.8s ease forwards;
+  opacity: 0;
+}
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease forwards;
+  opacity: 0;
+}
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+
+.nav-link {
+transition: color 0.3s ease;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 2px;
+bottom: -4px;
+left: 0;
+background-color: #3B64EA;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.nav-link:hover {
+color: #3B64EA;
+}
+.hero-bg {
+background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+}
+.logo-3d {
+transform-style: preserve-3d;
+transition: transform 0.8s ease;
+animation: float 6s ease-in-out infinite;
+}
+.logo-3d:hover {
+transform: rotate3d(1, 1, 1, 15deg) scale(1.05);
+}
+.service-card {
+transition: all 0.3s ease;
+overflow: hidden;
+}
+.service-card:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.service-card:hover .service-icon {
+transform: scale(1.1) rotate(5deg);
+}
+.service-icon {
+transition: all 0.4s ease;
+}
+.portfolio-item {
+transition: all 0.3s ease;
+overflow: hidden;
+}
+.portfolio-item:hover .portfolio-overlay {
+opacity: 1;
+}
+.portfolio-item:hover img {
+transform: scale(1.05);
+}
+.portfolio-overlay {
+opacity: 0;
+transition: all 0.3s ease;
+background: rgba(59, 100, 234, 0.85);
+}
+.portfolio-img {
+transition: all 0.2s ease;
+}
+input:focus + label,
+textarea:focus + label {
+transform: translateY(-20px) scale(0.8);
+color: #3B64EA;
+}
+input:not(:placeholder-shown) + label,
+textarea:not(:placeholder-shown) + label {
+transform: translateY(-20px) scale(0.8);
+}
+.form-label {
+transition: all 0.3s ease;
+transform-origin: left top;
+}
+@keyframes float1 {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-20px) rotateX(10deg) rotateY(10deg); }
+        }
+
+.stat-counter {
+display: inline-block;
+}
+.testimonial-slider {
+overflow-x: hidden;
+position: relative;
+}
+.testimonial-track {
+display: flex;
+transition: transform 0.5s ease;
+}
+.testimonial-card {
+flex: 0 0 100%;
+transition: all 0.3s ease;
+}
+.social-icon:hover {
+transform: translateY(-5px);
+}
+.custom-checkbox {
+appearance: none;
+-webkit-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+outline: none;
+transition: all 0.2s ease;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #3B64EA;
+border-color: #3B64EA;
+}
+.custom-checkbox:checked::after {
+content: '';
+position: absolute;
+top: 3px;
+left: 6px;
+width: 6px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+</style>
+
+
+
+</head>
+
+
+
+<body class="bg-white">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm shadow-sm z-50 rounded-b-xl">
+<div class="container mx-auto px-6 py-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
+<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
+</a>
+</div>
+<div class="hidden md:flex items-center justify-center flex-1 space-x-8">
+<a href="#home" class="nav-link text-gray-700 font-medium relative">Home</a>
+<a href="#services" class="nav-link text-gray-700 font-medium relative">Services</a>
+<a href="#portfolio" class="nav-link text-gray-700 font-medium relative">Portfolio</a>
+<a href="#testimonials" class="nav-link text-gray-700 font-medium relative">Testimonials</a>
+<a href="#about" class="nav-link text-gray-700 font-medium relative">About</a>
+<a href="#contact" class="nav-link text-gray-700 font-medium relative">Contact</a>
+</div>
+<div class="hidden md:block">
+<button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+Get Started
+</button>
+</div>
+<div class="md:hidden flex items-center">
+<button class="text-gray-700 hover:text-primary focus:outline-none">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section id="home" class="relative min-h-screen pt-24 flex items-center bg-white overflow-hidden">
+  <div class="container mx-auto px-5 lg:px-20" style="max-width: 1600px; width: 100%;">
+
+    <!-- Mobile: Logo at Top (order-first) -->
+     
+    <div class="flex md:hidden justify-center mb-8">
+      <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
+           alt="Pixapine" 
+           class="w-54 h-44 object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
+           style="transform-style: preserve-3d; animation: float1 6s ease-in-out infinite;">
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between">
+      <!-- Left Content Column -->
+      <div class="w-full md:w-1/2 mb-12 md:mb-0">
+        <h1 class="text-5xl md:text-6xl font-bold mb-2 text-gray-900 animate-fadeInUp" style="font-family: 'Chillax', sans-serif;">Pixapine</h1>
+        <div class="animate-fadeInUp animate-delay-100">
+          <p class="text-0.5xl text-gray-600 mb-6">A Digital Marketing Agency</p>
+          <h2 class="text-2xl md:text-4xl font-semibold mb-8 leading-tight text-gray-800"style="font-family: 'Poppins', sans-serif;">
+            From Dreams to Digital<br>
+            <span class="text-primary">We Grow with you</span>
+          </h2>
+          <div class="flex space-x-4 mb-8">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <i class="ri-linkedin-fill text-gray-600 group-hover:text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <i class="ri-instagram-fill text-gray-600 group-hover:text-white"></i>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <i class="ri-facebook-fill text-gray-600 group-hover:text-white"></i>
+            </a>
+          </div>
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+              Get a Free Consulting
+            </button>
+            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+              Download Brochure
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Desktop: Logo at Right (hidden on mobile) -->
+      <div class="hidden md:flex md:w-1/2 justify-end">
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
+             alt="Pixapine" 
+             class="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
+             style="transform-style: preserve-3d; margin-right: -5%;; animation: float1 6s ease-in-out infinite;">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Services Section -->
+<section id="services" class="py-20 bg-gray-50 relative">
+<div class="particles">
+<div class="particle" style="width: 15px; height: 15px; top: 10%; left: 45%; opacity: 0.3; animation-delay: 0s;"></div>
+<div class="particle" style="width: 20px; height: 20px; top: 20%; left: 25%; opacity: 0.2; animation-delay: 2s;"></div>
+<div class="particle" style="width: 25px; height: 25px; top: 30%; left: 75%; opacity: 0.1; animation-delay: 4s;"></div>
+<div class="particle" style="width: 10px; height: 10px; top: 60%; left: 15%; opacity: 0.2; animation-delay: 6s;"></div>
+<div class="particle" style="width: 18px; height: 18px; top: 70%; left: 85%; opacity: 0.15; animation-delay: 8s;"></div>
+</div>
+<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Our Services</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">We offer comprehensive digital marketing solutions tailored to your business needs, helping you achieve sustainable growth in the digital landscape.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Service 1 -->
+<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-layout-4-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Website Designing</h3>
+<p class="text-gray-600 mb-6">Custom-designed, responsive websites that engage visitors and convert them into customers.</p>
+<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
+Learn More <i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+<!-- Service 2 -->
+<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-search-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">SEO</h3>
+<p class="text-gray-600 mb-6">Data-driven SEO strategies that improve your search rankings and drive organic traffic to your website.</p>
+<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
+Learn More <i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+<!-- Service 3 -->
+<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-global-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Social Media Marketing</h3>
+<p class="text-gray-600 mb-6">Strategic social media campaigns that build brand awareness and foster meaningful customer relationships.</p>
+<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
+Learn More <i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+<!-- Service 4 -->
+<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
+<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-movie-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Video Editing</h3>
+<p class="text-gray-600 mb-6">Professional video production and editing services that tell your brand story and captivate your audience.</p>
+<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
+Learn More <i class="ri-arrow-right-line ml-2"></i>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section id="why-choose" class="py-20 bg-white relative">
+<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Why Choose Pixapine</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">We combine creativity, strategy, and technology to deliver exceptional results that help your business thrive in the digital world.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Reason 1 -->
+<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-team-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Expert Team</h3>
+<p class="text-gray-600">Our team of digital marketing specialists brings years of industry experience and a passion for innovation to every project.</p>
+</div>
+<!-- Reason 2 -->
+<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-rocket-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Innovative Solutions</h3>
+<p class="text-gray-600">We stay ahead of industry trends and technologies to deliver cutting-edge digital marketing solutions that give you a competitive edge.</p>
+</div>
+<!-- Reason 3 -->
+<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
+<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+<i class="ri-line-chart-line ri-2x text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-4">Data-Driven Approach</h3>
+<p class="text-gray-600">We leverage analytics and insights to make informed decisions and optimize your digital marketing campaigns for maximum ROI.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-gray-50">
+<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Our Portfolio</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Explore our successful projects that have helped businesses achieve their digital marketing goals.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Portfolio Item 1 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20design%2C%20clean%20layout%2C%20professional%20product%20photography%2C%20minimalist%20navigation%2C%20high-end%20fashion%20store%20website%20screenshot%20on%20desktop%2C%20UI%2FUX%20design%2C%20online%20shopping%20interface%2C%20digital%20marketing%20project&width=600&height=400&seq=12346&orientation=landscape" alt="E-commerce Website" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Luxe Fashion E-commerce</h3>
+<p class="text-gray-600 mb-4">A premium online shopping experience with seamless checkout and personalized recommendations.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Web Design</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">E-commerce</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">SEO</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 2 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=social%20media%20marketing%20campaign%20for%20a%20fitness%20brand%2C%20instagram%20post%20mockups%2C%20facebook%20ads%2C%20engagement%20metrics%20dashboard%2C%20digital%20marketing%20analytics%2C%20campaign%20performance%20visualization%2C%20professional%20marketing%20strategy%20presentation&width=600&height=400&seq=12347&orientation=landscape" alt="Social Media Campaign" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">FitLife Social Campaign</h3>
+<p class="text-gray-600 mb-4">A multi-platform social media campaign that increased brand engagement by 187% in three months.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Social Media</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Content Strategy</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Analytics</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 3 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=professional%20video%20production%20for%20corporate%20brand%2C%20video%20editing%20project%2C%20cinematic%20quality%2C%20professional%20lighting%2C%20high-end%20camera%20work%2C%20storytelling%20through%20video%2C%20digital%20marketing%20video%20campaign%2C%20promotional%20video&width=600&height=400&seq=12348&orientation=landscape" alt="Video Production" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">TechVision Brand Video</h3>
+<p class="text-gray-600 mb-4">A compelling brand story video that helped launch a new tech product and generated over 500K views.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Video Production</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Editing</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Brand Storytelling</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 4 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=SEO%20optimization%20project%2C%20search%20engine%20results%20page%2C%20keyword%20research%20dashboard%2C%20analytics%20graphs%20showing%20traffic%20growth%2C%20website%20ranking%20improvement%20visualization%2C%20digital%20marketing%20SEO%20strategy%2C%20professional%20data%20visualization&width=600&height=400&seq=12349&orientation=landscape" alt="SEO Project" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">GreenEco SEO Overhaul</h3>
+<p class="text-gray-600 mb-4">A comprehensive SEO strategy that improved organic traffic by 215% and first-page rankings for 28 key terms.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">SEO</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Content Marketing</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Analytics</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 5 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=restaurant%20website%20design%2C%20elegant%20food%20photography%2C%20online%20menu%20interface%2C%20reservation%20system%2C%20modern%20restaurant%20branding%2C%20digital%20marketing%20for%20hospitality%2C%20responsive%20website%20design%20for%20restaurant%2C%20professional%20web%20design&width=600&height=400&seq=12350&orientation=landscape" alt="Restaurant Website" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">Saveur Restaurant Website</h3>
+<p class="text-gray-600 mb-4">A mouth-watering website with online reservation system that increased bookings by 78%.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Web Design</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">UX/UI</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Photography</span>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 6 -->
+<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
+<div class="relative overflow-hidden h-64">
+<img src="https://readdy.ai/api/search-image?query=mobile%20app%20UI%20design%2C%20user%20interface%20mockups%2C%20app%20screens%2C%20mobile%20application%20development%2C%20digital%20marketing%20for%20mobile%20apps%2C%20user%20experience%20design%2C%20professional%20app%20design%2C%20clean%20modern%20interface&width=600&height=400&seq=12351&orientation=landscape" alt="Mobile App Design" class="portfolio-img w-full h-full object-cover object-top">
+<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+Visit Site
+</a>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-2">WanderGuide Travel App</h3>
+<p class="text-gray-600 mb-4">An intuitive travel app with personalized recommendations and seamless booking experience.</p>
+<div class="flex flex-wrap gap-2">
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">App Design</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">UX/UI</span>
+<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Development</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 bg-white">
+<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">What Our Clients Say</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our clients have to say about working with Pixapine.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Testimonial 1 -->
+<div class="testimonial-card w-full px-4">
+<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
+<div class="flex items-center mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20woman%2C%20corporate%20portrait%2C%20confident%20female%20executive%2C%2040s%2C%20business%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12352&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
+</div>
+<div>
+<h4 class="text-lg font-semibold">Emily Richardson</h4>
+<p class="text-gray-600">Marketing Director, Luxe Fashion</p>
+</div>
+<div class="ml-auto text-primary">
+<i class="ri-double-quotes-l ri-3x opacity-20"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"Pixapine transformed our digital presence completely. Their strategic approach to SEO and social media marketing has resulted in a 215% increase in online sales within just six months. Their team is responsive, creative, and truly invested in our success."</p>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="testimonial-card w-full px-4">
+<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
+<div class="flex items-center mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20man%2C%20corporate%20portrait%2C%20confident%20male%20executive%2C%2030s%2C%20business%20casual%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12353&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
+</div>
+<div>
+<h4 class="text-lg font-semibold">Michael Thompson</h4>
+<p class="text-gray-600">CEO, TechVision</p>
+</div>
+<div class="ml-auto text-primary">
+<i class="ri-double-quotes-l ri-3x opacity-20"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"Working with Pixapine on our product launch video was a game-changer. Their creativity and attention to detail resulted in a video that perfectly captured our brand essence. The video generated over 500K views and significantly boosted our product awareness."</p>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="testimonial-card w-full px-4">
+<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
+<div class="flex items-center mb-6">
+<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20woman%2C%20corporate%20portrait%2C%20confident%20female%20entrepreneur%2C%2050s%2C%20business%20professional%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12354&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
+</div>
+<div>
+<h4 class="text-lg font-semibold">Sarah Johnson</h4>
+<p class="text-gray-600">Owner, Saveur Restaurant</p>
+</div>
+<div class="ml-auto text-primary">
+<i class="ri-double-quotes-l ri-3x opacity-20"></i>
+</div>
+</div>
+<p class="text-gray-700 mb-6">"The website Pixapine designed for our restaurant has been a complete game-changer. Not only is it visually stunning, but the online reservation system has increased our bookings by 78%. Their team took the time to understand our brand and translated it perfectly online."</p>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section id="about" class="py-20 bg-gray-50">
+<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+<div class="flex flex-col lg:flex-row items-center gap-12">
+<div class="w-full lg:w-1/2">
+<h2 class="text-4xl font-bold mb-6">About Pixapine</h2>
+<p class="text-gray-700 mb-6">Pixapine is a full-service digital marketing agency dedicated to helping businesses thrive in the digital landscape. We combine creativity, strategy, and technology to create compelling digital experiences that connect brands with their target audience.</p>
+<p class="text-gray-700 mb-8">Our team of passionate experts is committed to delivering innovative, results-driven solutions that help our clients achieve sustainable growth through strategic digital marketing initiatives.</p>
+<div class="grid grid-cols-2 gap-6">
+<div>
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Strategic Approach</span>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Creative Excellence</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Technical Expertise</span>
+</div>
+</div>
+<div>
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Client-Centric Focus</span>
+</div>
+<div class="flex items-center mb-2">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Measurable Results</span>
+</div>
+<div class="flex items-center">
+<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
+<i class="ri-check-line"></i>
+</div>
+<span class="text-gray-700 font-medium">Continuous Innovation</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile: Logo at Top (smaller size) -->
+<div class="flex md:hidden justify-center mb-8">
+  <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
+       alt="Pixapine" 
+       class="w-48 h-48 object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
+       style="transform-style: preserve-3d;">
+</div>
+
+<!-- Desktop: Logo at Right (original size) -->
+<div class="hidden md:flex md:w-1/2 justify-end">
+  <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
+       alt="Pixapine" 
+       class="w-80 h-80 object-contain hover:scale-105  hover:rotate-6 transition-all duration-500"
+       style="transform-style: preserve-3d; margin-right: -5%;">
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white">
+<div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+<p class="text-gray-600 max-w-2xl mx-auto">Ready to transform your digital presence? Contact us today to discuss how we can help your business grow.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="w-full lg:w-1/2">
+<form class="space-y-6">
+<div class="relative">
+<input type="text" id="name" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
+<label for="name" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Name</label>
+</div>
+<div class="relative">
+<input type="email" id="email" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
+<label for="email" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Email</label>
+</div>
+<div class="relative">
+<input type="text" id="subject" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
+<label for="subject" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Subject</label>
+</div>
+<div class="relative">
+<textarea id="message" rows="5" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700"></textarea>
+<label for="message" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Message</label>
+</div>
+
+<button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
+Send Message
+</button>
+</form>
+</div>
+<div class="w-full lg:w-1/2">
+<div class="flex justify-center mb-8">
+<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png" alt="Contact Us" class="w-64 h-64 object-contain hover:scale-105 transition-all duration-500">
+</div>
+<div class="flex items-start justify-center">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+<i class="ri-mail-line text-primary ri-xl"></i>
+</div>
+<div>
+<h4 class="text-lg font-semibold mb-1">Email Us</h4>
+<p class="text-gray-600">pixapine@gmail.com</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-5">
+<div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
+<div class="flex flex-col md:flex-row justify-between items-center mb-8">
+<a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
+<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
+</a>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<i class="ri-linkedin-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<i class="ri-instagram-fill text-white"></i>
+</a>
+<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<i class="ri-facebook-fill text-white"></i>
+</a>
+<a href="mailto:pixapine@gmail.com" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<i class="ri-mail-fill text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Intersection Observer for animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-fadeInUp');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Observe all sections
+  document.querySelectorAll('section').forEach(section => {
+    const elements = section.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, h2, p');
+    elements.forEach((el, index) => {
+      el.style.opacity = '0';
+      el.style.animationDelay = `${index * 0.1}s`;
+      observer.observe(el);
+    });
+  });
+
+  // Add hover animations to buttons
+  document.querySelectorAll('button').forEach(button => {
+    button.addEventListener('mouseenter', (e) => {
+      e.target.style.transform = 'translateY(-3px)';
+      e.target.style.transition = 'all 0.3s ease';
+    });
+    button.addEventListener('mouseleave', (e) => {
+      e.target.style.transform = 'translateY(0)';
+    });
+  });
+// Animated Counter
+const counters = document.querySelectorAll('.stat-counter');
+const speed = 200;
+counters.forEach(counter => {
+const target = +counter.getAttribute('data-target');
+const increment = target / speed;
+let count = 0;
+const updateCount = () => {
+if (count < target) {
+count += increment;
+counter.innerText = Math.ceil(count);
+setTimeout(updateCount, 1);
+} else {
+counter.innerText = target;
+}
+};
+updateCount();
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Remove testimonial slider code as it's no longer needed
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Form label animation
+const formInputs = document.querySelectorAll('input, textarea');
+formInputs.forEach(input => {
+// Check initial state
+if (input.value) {
+const label = input.nextElementSibling;
+label.style.transform = 'translateY(-20px) scale(0.8)';
+label.style.color = '#3B64EA';
+}
+// Focus event
+input.addEventListener('focus', () => {
+const label = input.nextElementSibling;
+label.style.transform = 'translateY(-20px) scale(0.8)';
+label.style.color = '#3B64EA';
+});
+// Blur event
+input.addEventListener('blur', () => {
+const label = input.nextElementSibling;
+if (!input.value) {
+label.style.transform = '';
+label.style.color = '';
+}
+});
+});
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+}
+});
+});
+});
+</script>
+</body>
+</html>
