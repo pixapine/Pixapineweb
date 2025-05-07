@@ -226,36 +226,78 @@ transform: rotate(45deg);
 <body class="bg-white">
 <!-- Navigation -->
 <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm shadow-sm z-50 rounded-b-xl">
-<div class="container mx-auto px-6 py-4">
-<div class="flex items-center justify-between">
-<div class="flex items-center">
-<a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
-<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
-</a>
-</div>
-<div class="hidden md:flex items-center justify-center flex-1 space-x-8">
-<a href="#home" class="nav-link text-gray-700 font-medium relative">Home</a>
-<a href="#services" class="nav-link text-gray-700 font-medium relative">Services</a>
-<a href="#portfolio" class="nav-link text-gray-700 font-medium relative">Portfolio</a>
-<a href="#testimonials" class="nav-link text-gray-700 font-medium relative">Testimonials</a>
-<a href="#about" class="nav-link text-gray-700 font-medium relative">About</a>
-<a href="#contact" class="nav-link text-gray-700 font-medium relative">Contact</a>
-</div>
-<div class="hidden md:block">
-<button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
-Get Started
-</button>
-</div>
-<div class="md:hidden flex items-center">
-<button class="text-gray-700 hover:text-primary focus:outline-none">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-menu-line ri-lg"></i>
-</div>
-</button>
-</div>
-</div>
-</div>
+  <div class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
+          <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center justify-center flex-1 space-x-8">
+        <a href="#home" class="nav-link text-gray-700 font-medium relative">Home</a>
+        <a href="#services" class="nav-link text-gray-700 font-medium relative">Services</a>
+        <a href="#portfolio" class="nav-link text-gray-700 font-medium relative">Portfolio</a>
+        <a href="#testimonials" class="nav-link text-gray-700 font-medium relative">Testimonials</a>
+        <a href="#about" class="nav-link text-gray-700 font-medium relative">About</a>
+        <a href="#contact" class="nav-link text-gray-700 font-medium relative">Contact</a>
+      </div>
+      
+      <div class="hidden md:block">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header" class="inline-block">
+          <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+            Get Started
+          </button>
+        </a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
+          <div class="w-6 h-6 flex items-center justify-center">
+            <i class="ri-menu-line ri-lg"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+      <div class="flex flex-col space-y-4">
+        <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
+        <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
+        <a href="#portfolio" class="nav-link text-gray-700 font-medium">Portfolio</a>
+        <a href="#testimonials" class="nav-link text-gray-700 font-medium">Testimonials</a>
+        <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
+        <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header" class="inline-block">
+          <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 w-full">
+            Get Started
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
 </nav>
+
+<!-- JavaScript to toggle mobile menu -->
+<script>
+  document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('hidden');
+    
+    // Toggle between menu and close icons
+    const icon = this.querySelector('i');
+    if (mobileMenu.classList.contains('hidden')) {
+      icon.classList.remove('ri-close-line');
+      icon.classList.add('ri-menu-line');
+    } else {
+      icon.classList.remove('ri-menu-line');
+      icon.classList.add('ri-close-line');
+    }
+  });
+</script>
 <!-- Hero Section -->
 <section id="home" class="relative min-h-screen pt-24 flex items-center bg-white overflow-hidden">
   <div class="container mx-auto px-5 lg:px-20" style="max-width: 1600px; width: 100%;">
@@ -280,23 +322,25 @@ Get Started
             <span class="text-primary">We Grow with you</span>
           </h2>
           <div class="flex space-x-4 mb-8">
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+            <a href="https://www.linkedin.com/company/pixapine" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
               <i class="ri-linkedin-fill text-gray-600 group-hover:text-white"></i>
             </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+            <a href="https://www.instagram.com/pixapine/" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
               <i class="ri-instagram-fill text-gray-600 group-hover:text-white"></i>
             </a>
-            <a href="#" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+            <a href="https://www.facebook.com/profile.php?id=61575244541469" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
               <i class="ri-facebook-fill text-gray-600 group-hover:text-white"></i>
             </a>
           </div>
           <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header">
             <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
               Get a Free Consulting
-            </button>
+            </button></a>
+            <a href="https://drive.google.com/uc?export=download&id=11_uVnnNilxCY1J0r-LEaWMRkx75rpbqw">
             <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
               Download Brochure
-            </button>
+            </button></a>
           </div>
         </div>
       </div>
@@ -698,53 +742,70 @@ Visit Site
 </div>
 </section>
 <!-- Contact Section -->
+<!-- Contact Section -->
 <section id="contact" class="py-20 bg-white">
-<div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Ready to transform your digital presence? Contact us today to discuss how we can help your business grow.</p>
-</div>
-<div class="flex flex-col lg:flex-row gap-12">
-<div class="w-full lg:w-1/2">
-<form class="space-y-6">
-<div class="relative">
-<input type="text" id="name" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
-<label for="name" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Name</label>
-</div>
-<div class="relative">
-<input type="email" id="email" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
-<label for="email" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Email</label>
-</div>
-<div class="relative">
-<input type="text" id="subject" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
-<label for="subject" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Subject</label>
-</div>
-<div class="relative">
-<textarea id="message" rows="5" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700"></textarea>
-<label for="message" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Message</label>
-</div>
+  <div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">Ready to transform your digital presence? Contact us today to discuss how we can help your business grow.</p>
+    </div>
+    <div class="flex flex-col lg:flex-row gap-12">
+      <div class="w-full lg:w-1/2">
+        <!-- Netlify Form -->
+        <form 
+          name="contact" 
+          method="POST" 
+          data-netlify="true" 
+          netlify-honeypot="bot-field" 
+          action="/thank-you" 
+          class="space-y-6"
+        >
+          <!-- Hidden honeypot field for spam protection -->
+          <input type="hidden" name="form-name" value="contact">
+          <div class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </div>
+          
+          <div class="relative">
+            <input type="text" id="name" name="name" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <label for="name" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Name</label>
+          </div>
+          <div class="relative">
+            <input type="email" id="email" name="email" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <label for="email" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Email</label>
+          </div>
+          <div class="relative">
+            <input type="text" id="subject" name="subject" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <label for="subject" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Subject</label>
+          </div>
+          <div class="relative">
+            <textarea id="message" name="message" rows="5" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required></textarea>
+            <label for="message" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Message</label>
+          </div>
 
-<button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
-Send Message
-</button>
-</form>
-</div>
-<div class="w-full lg:w-1/2">
-<div class="flex justify-center mb-8">
-<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png" alt="Contact Us" class="w-64 h-64 object-contain hover:scale-105 transition-all duration-500">
-</div>
-<div class="flex items-start justify-center">
-<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
-<i class="ri-mail-line text-primary ri-xl"></i>
-</div>
-<div>
-<h4 class="text-lg font-semibold mb-1">Email Us</h4>
-<p class="text-gray-600">pixapine@gmail.com</p>
-</div>
-</div>
-</div>
-</div>
-</div>
+          <button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
+            Send Message
+          </button>
+        </form>
+      </div>
+      <div class="w-full lg:w-1/2">
+        <div class="flex justify-center mb-8">
+          <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png" alt="Contact Us" class="w-64 h-64 object-contain hover:scale-105 transition-all duration-500">
+        </div>
+        <div class="flex items-start justify-center">
+          <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
+            <a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]">
+              <i class="ri-mail-line text-primary ri-xl"></i>
+            </a>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-1">Email Us</h4>
+            <p class="text-gray-600">pixapine@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-5">
@@ -754,16 +815,16 @@ Send Message
 <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
 </a>
 <div class="flex space-x-4">
-<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<a href="https://www.linkedin.com/company/pixapine" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
 <i class="ri-linkedin-fill text-white"></i>
 </a>
-<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<a href="https://www.instagram.com/pixapine/" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
 <i class="ri-instagram-fill text-white"></i>
 </a>
-<a href="#" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<a href="https://www.facebook.com/profile.php?id=61575244541469" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
 <i class="ri-facebook-fill text-white"></i>
 </a>
-<a href="mailto:pixapine@gmail.com" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+<a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]">
 <i class="ri-mail-fill text-white"></i>
 </a>
 </div>
