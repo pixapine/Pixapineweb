@@ -3,12 +3,17 @@
 <head>
 
 <title>Pixapine</title>
-<meta property="og:title" content="Pixapine" />
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Pixapine is a digital marketing agency based in India, helping businesses grow online with expert SEO and marketing services." />
 <meta name="keywords" content="pixapine, digital marketing India, SEO services India, social media marketing, online marketing India" />
-
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://pixapine.in" />
+<meta property="og:title" content="Pixapine "/>
+<meta property="og:description" content="Grow your business online with expert SEO & marketing services from Pixapine." />
+<meta property="og:image" content="https://pixapine.in/logo.png" /> <!-- Must be 1200x630px -->
+<meta property="og:site_name" content="Pixapine" />
 
 
 <script src="https://cdn.tailwindcss.com/3.4.16"></script>
@@ -20,10 +25,12 @@
     "@type": "Organization",
     "name": "Pixapine",
     "url": "https://pixapine.in",
-    "logo": "https://pixapine.in/pixapine-logo.png",
+    "logo": "https://pixapine.in/logo.png", <!-- Replace with actual logo URL -->
+    "description": "Pixapine is a digital marketing agency based in India, helping businesses grow online with expert SEO and marketing services.",
     "sameAs": [
       "https://facebook.com/pixapine",
-      "https://instagram.com/pixapine"
+      "https://instagram.com/pixapine",
+      "https://linkedin.com/company/pixapine" <!-- Add more if available -->
     ]
   }
   </script>
@@ -68,7 +75,13 @@ scroll-behavior: smooth;
   from { transform: translateX(50px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
-
+.hero {
+  background-image: url("https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true");
+  background-size: cover; /* Ensures full coverage */
+  background-position: center; /* Centers the image */
+  aspect-ratio: 3/4; /* Maintains ratio */
+  width: 100%;
+}
 .animate-fadeInUp {
   animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
@@ -299,11 +312,23 @@ transform: rotate(45deg);
   });
 </script>
 <!-- Hero Section -->
-<section id="home" class="relative min-h-screen pt-24 flex items-center bg-white overflow-hidden">
-  <div class="container mx-auto px-5 lg:px-20" style="max-width: 1600px; width: 100%;">
+<!-- Hero Section -->
+<section id="home" class="relative min-h-screen pt-24 flex items-center overflow-hidden">
+  <!-- Background SVG -->
+  <div class="absolute inset-0 z-0">
+    <img 
+      src="https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true" 
+      alt="Hero background"
+      class="w-full h-full object-cover object-center"
+      loading="eager"
+    >
+    <!-- Gradient overlay for better text readability -->
+    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"></div>
+  </div>
+
+  <div class="container mx-auto px-5 lg:px-20 relative z-10" style="max-width: 1600px; width: 100%;">
 
     <!-- Mobile: Logo at Top (order-first) -->
-     
     <div class="flex md:hidden justify-center mb-8">
       <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
            alt="Pixapine" 
@@ -317,7 +342,7 @@ transform: rotate(45deg);
         <h1 class="text-5xl md:text-6xl font-bold mb-2 text-gray-900 animate-fadeInUp" style="font-family: 'Chillax', sans-serif;">Pixapine</h1>
         <div class="animate-fadeInUp animate-delay-100">
           <p class="text-0.5xl text-gray-600 mb-6">A Digital Marketing Agency</p>
-          <h2 class="text-2xl md:text-4xl font-semibold mb-8 leading-tight text-gray-800"style="font-family: 'Poppins', sans-serif;">
+          <h2 class="text-2xl md:text-4xl font-semibold mb-8 leading-tight text-gray-800" style="font-family: 'Poppins', sans-serif;">
             From Dreams to Digital<br>
             <span class="text-primary">We Grow with you</span>
           </h2>
@@ -338,7 +363,7 @@ transform: rotate(45deg);
               Get a Free Consulting
             </button></a>
             <a href="https://drive.google.com/uc?export=download&id=11_uVnnNilxCY1J0r-LEaWMRkx75rpbqw">
-            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
               Download Brochure
             </button></a>
           </div>
@@ -350,7 +375,7 @@ transform: rotate(45deg);
         <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
              alt="Pixapine" 
              class="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
-             style="transform-style: preserve-3d; margin-right: -5%;; animation: float1 6s ease-in-out infinite;">
+             style="transform-style: preserve-3d; margin-right: -5%; animation: float1 6s ease-in-out infinite;">
       </div>
     </div>
   </div>
@@ -824,7 +849,7 @@ Visit Site
 <a href="https://www.facebook.com/profile.php?id=61575244541469" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
 <i class="ri-facebook-fill text-white"></i>
 </a>
-<a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]">
+<a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]"class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
 <i class="ri-mail-fill text-white"></i>
 </a>
 </div>
