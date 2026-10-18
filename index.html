@@ -1,825 +1,936 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- ============================================================
+  PIXAPINE — Ad Film Production Company
+  File: index.html (Homepage)
+  
+  PAGE SECTIONS (in order):
+    1. <head>         — Meta, SEO, fonts, Tailwind config, base styles
+    2. <nav>          — Fixed top navigation (desktop + mobile)
+    #home / #services / #portfolio / #process / #about / #contact
+    <footer>          — Logo, social links
+    <script>          — All JS: mobile menu, scroll animations, form labels, smooth scroll
+
+  ENHANCEMENTS (Step 2):
+    A. Custom cursor          — Blue dot + trailing ring follow mouse
+    B. Scroll progress bar    — Thin primary-blue bar across top of page
+    C. Navbar scroll effect   — Becomes solid white + shadow when scrolled
+    D. Typewriter effect      — Hero tagline types out on load
+    E. Reveal on scroll       — Sections slide in from bottom as you scroll
+    F. Active nav highlight   — Current section link turns primary blue
+    G. Back-to-top button     — Appears after scrolling 400px
+  ============================================================ -->
+
 <head>
 
-<title>Pixapine</title>
+<!-- ============================================================
+  ASSET LINKS USED IN THIS PAGE (unchanged from the original site)
+  Navbar + footer logo : https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png
+  Hero + About logo    : https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png
+  Contact image        : https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png
+  Hero background      : https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true
+  Fonts                : Poppins (Google Fonts), Chillax (Fontshare)
+  Icons                : inline SVG (no external icon library needed)
+  ============================================================ -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Pixapine is a digital marketing agency based in India, helping businesses grow online with expert SEO and marketing services." />
-<meta name="keywords" content="pixapine, digital marketing India, SEO services India, social media marketing, online marketing India" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://pixapine.in" />
-<meta property="og:title" content="Pixapine "/>
-<meta property="og:description" content="Grow your business online with expert SEO & marketing services from Pixapine." />
-<meta property="og:image" content="https://pixapine.in/logo.png" /> <!-- Must be 1200x630px -->
-<meta property="og:site_name" content="Pixapine" />
+  <!-- ── Page Identity ─────────────────────────────────────── -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixapine — Ad Film Production Company</title>
 
+  <!-- ── SEO Meta Tags ─────────────────────────────────────── -->
+  <meta name="description" content="Pixapine is an ad film production company based in India, producing commercial ad films, industry videos and brand collaboration films.">
+  <meta name="keywords" content="pixapine, ad film production India, commercial video production, brand films, corporate ad films, brand collaborations">
 
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#3B64EA',secondary:'#F97316'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
- <!-- ✅ Structured Data for Logo in Search Results -->
- <script type="application/ld+json">
+  <!-- ── Open Graph (for social media link previews) ───────── -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pixapine.in">
+  <meta property="og:title" content="Pixapine">
+  <meta property="og:description" content="Ad films, commercial videos and brand collaborations — crafted by Pixapine.">
+  <meta property="og:image" content="https://pixapine.in/logo.png">
+  <meta property="og:site_name" content="Pixapine">
+
+  <!-- ── Structured Data (Google logo in search results) ───── -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Pixapine",
     "url": "https://pixapine.in",
-    "logo": "https://pixapine.in/logo.png", 
-    "description": "Pixapine is a digital marketing agency based in India, helping businesses grow online with expert SEO and marketing services.",
+    "logo": "https://pixapine.in/logo.png",
+    "description": "Pixapine is an ad film production company based in India, producing commercial ad films, industry videos and brand collaboration films.",
     "sameAs": [
       "https://facebook.com/pixapine",
       "https://instagram.com/pixapine",
-      "https://linkedin.com/company/pixapine" 
+      "https://linkedin.com/company/pixapine"
     ]
   }
   </script>
-  
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-<link href="https://api.fontshare.com/v2/css?f[]=chillax@600&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
 
-<style>
-:where([class^="ri-"])::before { content: "\f3c2"; }
-body {
-font-family: 'Poppins', sans-serif;
-font-family: 'Chillax', sans-serif;
-scroll-behavior: smooth;
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-@keyframes slideInRight {
-  from { transform: translateX(50px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-.hero {
-  background-image: url("https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true");
-  background-size: cover; /* Ensures full coverage */
-  background-position: center; /* Centers the image */
-  aspect-ratio: 3/4; /* Maintains ratio */
-  width: 100%;
-}
-.animate-fadeInUp {
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-}
-.animate-fadeIn {
-  animation: fadeIn 0.8s ease forwards;
-  opacity: 0;
-}
-.animate-scaleIn {
-  animation: scaleIn 0.8s ease forwards;
-  opacity: 0;
-}
-.animate-slideInRight {
-  animation: slideInRight 0.8s ease forwards;
-  opacity: 0;
-}
-.animate-delay-100 { animation-delay: 0.1s; }
-.animate-delay-200 { animation-delay: 0.2s; }
-.animate-delay-300 { animation-delay: 0.3s; }
-.animate-delay-400 { animation-delay: 0.4s; }
-.animate-delay-500 { animation-delay: 0.5s; }
+  <!-- ── Favicon ────────────────────────────────────────────── -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
-.nav-link {
-transition: color 0.3s ease;
-}
-.nav-link::after {
-content: '';
-position: absolute;
-width: 0;
-height: 2px;
-bottom: -4px;
-left: 0;
-background-color: #3B64EA;
-transition: width 0.3s ease;
-}
-.nav-link:hover::after {
-width: 100%;
-}
-.nav-link:hover {
-color: #3B64EA;
-}
-.hero-bg {
-background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
-}
-.logo-3d {
-transform-style: preserve-3d;
-transition: transform 0.8s ease;
-animation: float 6s ease-in-out infinite;
-}
-.logo-3d:hover {
-transform: rotate3d(1, 1, 1, 15deg) scale(1.05);
-}
-.service-card {
-transition: all 0.3s ease;
-overflow: hidden;
-}
-.service-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-.service-card:hover .service-icon {
-transform: scale(1.1) rotate(5deg);
-}
-.service-icon {
-transition: all 0.4s ease;
-}
-.portfolio-item {
-transition: all 0.3s ease;
-overflow: hidden;
-}
-.portfolio-item:hover .portfolio-overlay {
-opacity: 1;
-}
-.portfolio-item:hover img {
-transform: scale(1.05);
-}
-.portfolio-overlay {
-opacity: 0;
-transition: all 0.3s ease;
-background: rgba(59, 100, 234, 0.85);
-}
-.portfolio-img {
-transition: all 0.2s ease;
-}
-input:focus + label,
-textarea:focus + label {
-transform: translateY(-20px) scale(0.8);
-color: #3B64EA;
-}
-input:not(:placeholder-shown) + label,
-textarea:not(:placeholder-shown) + label {
-transform: translateY(-20px) scale(0.8);
-}
-.form-label {
-transition: all 0.3s ease;
-transform-origin: left top;
-}
-@keyframes float1 {
-            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
-            50% { transform: translateY(-20px) rotateX(10deg) rotateY(10deg); }
+  <!-- ── Fonts ─────────────────────────────────────────────── -->
+  <!-- Preconnect speeds up Google Fonts loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Poppins: body text / headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Chillax: brand / hero display font -->
+  <link href="https://api.fontshare.com/v2/css?f[]=chillax@600&display=swap" rel="stylesheet">
+
+
+  <!-- ── Tailwind CSS (CDN) + Brand Color Config ───────────── -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3B64EA',   /* Brand blue — buttons, accents, links */
+            secondary: '#F97316'  /* Brand orange — available for highlights */
+          },
+          borderRadius: {
+            button: '8px'         /* Consistent button rounding */
+          }
         }
+      }
+    }
+  </script>
 
-.stat-counter {
-display: inline-block;
-}
-.testimonial-slider {
-overflow-x: hidden;
-position: relative;
-}
-.testimonial-track {
-display: flex;
-transition: transform 0.5s ease;
-}
-.testimonial-card {
-flex: 0 0 100%;
-transition: all 0.3s ease;
-}
-.social-icon:hover {
-transform: translateY(-5px);
-}
-.custom-checkbox {
-appearance: none;
--webkit-appearance: none;
-width: 20px;
-height: 20px;
-border: 2px solid #d1d5db;
-border-radius: 4px;
-outline: none;
-transition: all 0.2s ease;
-position: relative;
-}
-.custom-checkbox:checked {
-background-color: #3B64EA;
-border-color: #3B64EA;
-}
-.custom-checkbox:checked::after {
-content: '';
-position: absolute;
-top: 3px;
-left: 6px;
-width: 6px;
-height: 10px;
-border: solid white;
-border-width: 0 2px 2px 0;
-transform: rotate(45deg);
-}
-</style>
+  <!-- ── Base Styles & Animations ─────────────────────────── -->
+  <style>
 
+    /* ── Global Font & Scroll ── */
+    body {
+      font-family: 'Chillax', 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
+    /* ── Entrance Animations ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to   { transform: translateX(0);    opacity: 1; }
+    }
+
+    /* Animation utility classes (applied via JS on scroll) */
+    .animate-fadeInUp    { animation: fadeInUp    0.8s ease forwards; opacity: 0; }
+    .animate-fadeIn      { animation: fadeIn      0.8s ease forwards; opacity: 0; }
+    .animate-scaleIn     { animation: scaleIn     0.8s ease forwards; opacity: 0; }
+    .animate-slideInRight{ animation: slideInRight 0.8s ease forwards; opacity: 0; }
+
+    /* Staggered delay helpers */
+    .animate-delay-100 { animation-delay: 0.1s; }
+    .animate-delay-200 { animation-delay: 0.2s; }
+    .animate-delay-300 { animation-delay: 0.3s; }
+    .animate-delay-400 { animation-delay: 0.4s; }
+    .animate-delay-500 { animation-delay: 0.5s; }
+
+    /* ── Navigation Links — underline slide-in effect ── */
+    .nav-link { transition: color 0.3s ease; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0; height: 2px;
+      bottom: -4px; left: 0;
+      background-color: #3B64EA;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #3B64EA; }
+
+    /* ── Hero Logo — floating animation ── */
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0)    rotateX(5deg)  rotateY(5deg); }
+      50%       { transform: translateY(-20px) rotateX(10deg) rotateY(10deg); }
+    }
+
+    /* ── Service Cards — lift on hover ── */
+    .service-card { transition: all 0.3s ease; overflow: hidden; }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+    }
+    .service-icon { transition: all 0.4s ease; }
+    .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+
+    /* ── Portfolio Cards — overlay reveal on hover ── */
+    .portfolio-item { transition: all 0.3s ease; overflow: hidden; }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay {
+      opacity: 0;
+      transition: all 0.3s ease;
+      background: rgba(59, 100, 234, 0.85);
+    }
+    .portfolio-img { transition: all 0.2s ease; }
+
+    /* ── Animated Number Counters ── */
+    .stat-counter { display: inline-block; }
+
+    /* ── Social Icons — lift on hover ── */
+    .social-icon:hover { transform: translateY(-5px); }
+
+    /* ── Contact Form — floating labels ──
+       Label moves up when field is focused or has a value */
+    .form-label {
+      transition: all 0.3s ease;
+      transform-origin: left top;
+    }
+    input:focus + label,
+    textarea:focus + label {
+      transform: translateY(-20px) scale(0.8);
+      color: #3B64EA;
+    }
+    input:not(:placeholder-shown) + label,
+    textarea:not(:placeholder-shown) + label {
+      transform: translateY(-20px) scale(0.8);
+    }
+
+    /* ── Custom Checkbox (contact form consent) ── */
+    .custom-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px; height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      outline: none;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .custom-checkbox:checked {
+      background-color: #3B64EA;
+      border-color: #3B64EA;
+    }
+    .custom-checkbox:checked::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 6px;
+      width: 6px; height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    /* ============================================================
+       ENHANCEMENT A: Custom Cursor
+       - Small filled blue dot follows mouse exactly
+       - Larger hollow ring follows with a smooth lag
+       - Cursor hides on mobile (pointer: none only on desktop)
+       - .cursor-grow class added when hovering links/buttons
+       ============================================================ */
+    @media (pointer: fine) {
+      * { cursor: none !important; }
+    }
+    #cursor-dot {
+      width: 8px; height: 8px;
+      background: #3B64EA;
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+    #cursor-ring {
+      width: 36px; height: 36px;
+      border: 2px solid #3B64EA;
+      border-radius: 50%;
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s;
+      /* Ring lags slightly behind dot via JS lerp */
+    }
+    /* When hovering interactive elements, ring expands */
+    #cursor-ring.cursor-grow {
+      width: 56px; height: 56px;
+      border-color: #F97316;
+      background: rgba(59, 100, 234, 0.06);
+    }
+    #cursor-dot.cursor-grow {
+      width: 6px; height: 6px;
+      background: #F97316;
+    }
+
+    /* ============================================================
+       ENHANCEMENT B: Scroll Progress Bar
+       - Thin bar pinned to the very top of the viewport
+       - Width grows from 0% → 100% as user scrolls the page
+       ============================================================ */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #3B64EA, #F97316);
+      z-index: 10000;
+      transition: width 0.05s linear;
+    }
+
+    /* ============================================================
+       ENHANCEMENT C: Navbar Scroll Effect
+       - Nav starts semi-transparent (already styled in HTML)
+       - .nav-scrolled class added by JS when page scrolls > 20px
+       ============================================================ */
+    nav.nav-scrolled {
+      background: rgba(255,255,255,0.98) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important;
+    }
+
+    /* ============================================================
+       ENHANCEMENT D: Typewriter Effect
+       - Applied to the hero <h2> tagline element
+       - JS types out characters one by one
+       - Cursor blink added via CSS ::after
+       ============================================================ */
+    .typewriter-cursor::after {
+      content: '|';
+      color: #3B64EA;
+      animation: blink 0.8s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ============================================================
+       ENHANCEMENT E: Section Reveal on Scroll
+       - .reveal class marks elements to animate
+       - They start invisible + shifted down
+       - .revealed class (added by JS) transitions them in
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger delays for grid children */
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       ENHANCEMENT F: Active Nav Link
+       - .nav-active added by JS to the link matching current section
+       ============================================================ */
+    .nav-link.nav-active {
+      color: #3B64EA;
+    }
+    .nav-link.nav-active::after {
+      width: 100%;
+    }
+
+    /* ============================================================
+       ENHANCEMENT G: Back-to-Top Button
+       - Fixed bottom-right button, hidden by default
+       - .visible class (added by JS) fades it in after 400px scroll
+       ============================================================ */
+    #back-to-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 44px; height: 44px;
+      background: #3B64EA;
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      box-shadow: 0 4px 14px rgba(59, 100, 234, 0.4);
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    #back-to-top:hover {
+      background: #2a50d4;
+      transform: translateY(-3px);
+    }
+
+  </style>
 
 </head>
 
-
-
 <body class="bg-white">
-<!-- Navigation -->
-<nav class="fixed top-4 left-4 right-4 bg-white/80 backdrop-blur-sm shadow-sm z-50 rounded-xl">
+
+<!-- ── Enhancement Elements (injected by CSS/JS) ────────────── -->
+
+<!-- A. Custom Cursor: dot (precise) + ring (lagging trail) -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- B. Scroll Progress Bar (top of page) -->
+<div id="scroll-progress"></div>
+
+<!-- G. Back to Top Button -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+
+<!-- ============================================================
+  SECTION 1: NAVIGATION
+  - Fixed floating pill navbar (desktop + mobile)
+  - Desktop: logo left, links center, CTA button right
+  - Mobile: hamburger toggles a dropdown menu
+  ============================================================ -->
+<nav id="main-nav" class="fixed top-4 left-4 right-4 bg-white/80 backdrop-blur-sm shadow-sm z-50 rounded-xl">
   <div class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
-      <div class="flex items-center">
-        <a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
-          <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
-        </a>
-      </div>
-      
-      <!-- Desktop Navigation -->
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png"
+             alt="Pixapine" class="h-10">
+      </a>
+
+      <!-- Desktop Nav Links -->
       <div class="hidden md:flex items-center justify-center flex-1 space-x-8">
-        <a href="#home" class="nav-link text-gray-700 font-medium relative">Home</a>
-        <a href="#services" class="nav-link text-gray-700 font-medium relative">Services</a>
-        <a href="#portfolio" class="nav-link text-gray-700 font-medium relative">Portfolio</a>
-        <a href="#testimonials" class="nav-link text-gray-700 font-medium relative">Testimonials</a>
-        <a href="#about" class="nav-link text-gray-700 font-medium relative">About</a>
-        <a href="#contact" class="nav-link text-gray-700 font-medium relative">Contact</a>
+        <a href="#home"         class="nav-link text-gray-700 font-medium relative">Home</a>
+        <a href="#services"     class="nav-link text-gray-700 font-medium relative">Services</a>
+        <a href="#portfolio"    class="nav-link text-gray-700 font-medium relative">Portfolio</a>
+        <a href="#process"      class="nav-link text-gray-700 font-medium relative">Process</a>
+        <a href="#about"        class="nav-link text-gray-700 font-medium relative">About</a>
+        <a href="#contact"      class="nav-link text-gray-700 font-medium relative">Contact</a>
       </div>
-      
+
+      <!-- Desktop CTA Button -->
       <div class="hidden md:block">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header" class="inline-block">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header">
           <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
-            Get Started
+            Start a Project
           </button>
         </a>
       </div>
-      
-      <!-- Mobile menu button -->
+
+      <!-- Mobile Hamburger Button -->
       <div class="md:hidden flex items-center">
         <button id="mobile-menu-button" class="text-gray-700 hover:text-primary focus:outline-none">
           <div class="w-6 h-6 flex items-center justify-center">
-            <i class="ri-menu-line ri-lg"></i>
+            <span id="menu-icon" class="flex"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
           </div>
         </button>
       </div>
+
     </div>
-    
-    <!-- Mobile Navigation (hidden by default) -->
+
+    <!-- Mobile Dropdown Menu (hidden by default, toggled via JS) -->
     <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
       <div class="flex flex-col space-y-4">
-        <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
-        <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
-        <a href="#portfolio" class="nav-link text-gray-700 font-medium">Portfolio</a>
-        <a href="#testimonials" class="nav-link text-gray-700 font-medium">Testimonials</a>
-        <a href="#about" class="nav-link text-gray-700 font-medium">About</a>
-        <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header" class="inline-block">
+        <a href="#home"         class="nav-link text-gray-700 font-medium">Home</a>
+        <a href="#services"     class="nav-link text-gray-700 font-medium">Services</a>
+        <a href="#portfolio"    class="nav-link text-gray-700 font-medium">Portfolio</a>
+        <a href="#process"      class="nav-link text-gray-700 font-medium">Process</a>
+        <a href="#about"        class="nav-link text-gray-700 font-medium">About</a>
+        <a href="#contact"      class="nav-link text-gray-700 font-medium">Contact</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header">
           <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 w-full">
-            Get Started
+            Start a Project
           </button>
         </a>
       </div>
     </div>
+
   </div>
 </nav>
 
-<!-- JavaScript to toggle mobile menu -->
-<script>
-  document.getElementById('mobile-menu-button').addEventListener('click', function() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('hidden');
-    
-    // Toggle between menu and close icons
-    const icon = this.querySelector('i');
-    if (mobileMenu.classList.contains('hidden')) {
-      icon.classList.remove('ri-close-line');
-      icon.classList.add('ri-menu-line');
-    } else {
-      icon.classList.remove('ri-menu-line');
-      icon.classList.add('ri-close-line');
-    }
-  });
-</script>
-<!-- Hero Section -->
-<!-- Hero Section -->
-<section id="home" class="relative min-h-screen pt-24 flex items-center overflow-hidden">
-  <!-- Background SVG -->
-  <div class="absolute inset-0 z-0">
-    <img 
-      src="https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true" 
-      alt="Hero background"
-      class="w-full h-full object-cover object-center"
-      loading="eager"
-    >
 
+<!-- ============================================================
+  SECTION 2: HERO
+  - Full screen height with background image
+  - Left: brand name, tagline, social icons, 2 CTA buttons
+  - Right: floating logo image (hidden on mobile, shown on desktop)
+  - Mobile: logo appears above text content
+  ============================================================ -->
+<section id="home" class="relative min-h-screen pt-24 flex items-center overflow-hidden">
+
+  <!-- Full-cover background image -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://github.com/pixapine/Pixapineweb/blob/main/Herobai.png?raw=true"
+         alt="Hero background"
+         class="w-full h-full object-cover object-center"
+         loading="eager">
   </div>
 
   <div class="container mx-auto px-5 lg:px-20 relative z-10" style="max-width: 1600px; width: 100%;">
 
-    <!-- Mobile: Logo at Top (order-first) -->
+    <!-- Mobile logo (appears above text on small screens) -->
     <div class="flex md:hidden justify-center mb-8">
-      <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
-           alt="Pixapine" 
+      <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png"
+           alt="Pixapine"
            class="w-54 h-44 object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
            style="transform-style: preserve-3d; animation: float1 6s ease-in-out infinite;">
     </div>
 
     <div class="flex flex-col md:flex-row items-center justify-between">
-      <!-- Left Content Column -->
+
+      <!-- Left: Text Content -->
       <div class="w-full md:w-1/2 mb-12 md:mb-0">
-        <h1 class="text-5xl md:text-8xl font-bold mb-2 text-gray-900 animate-fadeInUp" style="font-family: 'Chillax', sans-serif;">Pixapine</h1>
+
+        <!-- Brand name (Chillax display font) -->
+        <h1 class="text-5xl md:text-8xl font-bold mb-2 text-gray-900 animate-fadeInUp"
+            style="font-family: 'Chillax', sans-serif;">Pixapine</h1>
+
         <div class="animate-fadeInUp animate-delay-100">
-          <p class="text-0.5xl md:text-1.2xl text-gray-600 mb-6">A Digital Marketing Agency</p>
-          <h2 class="text-2xl md:text-4xl font-semibold mb-8 leading-tight text-gray-800" style="font-family: 'Poppins', sans-serif;">
-            From Dreams to Digital<br>
-            <span class="text-primary">We Grow with you</span>
-          </h2>
+          <p class="text-gray-600 mb-6">An Ad Film Production Company</p>
+
+          <!-- Hero tagline (Poppins for readability) -->
+          <h2 id="hero-tagline"
+              class="text-2xl md:text-4xl font-semibold mb-8 leading-tight text-gray-800"
+              style="font-family: 'Poppins', sans-serif;"></h2>
+
+          <!-- Social Icons -->
           <div class="flex space-x-4 mb-8">
-            <a href="https://www.linkedin.com/company/pixapine" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
-              <i class="ri-linkedin-fill text-gray-600 group-hover:text-white"></i>
+            <a href="https://www.linkedin.com/company/pixapine"
+               class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="w-5 h-5 text-gray-600 group-hover:text-white" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9.75h4V21H3zM9.75 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.63 4.75 6.05V21h-4v-4.93c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg>
             </a>
-            <a href="https://www.instagram.com/pixapine/" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
-              <i class="ri-instagram-fill text-gray-600 group-hover:text-white"></i>
+            <a href="https://www.instagram.com/pixapine/"
+               class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gray-600 group-hover:text-white" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61575244541469" class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
-              <i class="ri-facebook-fill text-gray-600 group-hover:text-white"></i>
+            <a href="https://www.facebook.com/profile.php?id=61575244541469"
+               class="w-10 h-10 rounded-full bg-gray-100 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon group">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="w-5 h-5 text-gray-600 group-hover:text-white" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.5V13h2.8v8z"/></svg>
             </a>
           </div>
+
+          <!-- CTA Buttons -->
           <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSdYASgWJ0ZIqWayENPRnhH1qDBU9ng-Q7ciERxpPWLG5uz3wA/viewform?usp=header">
-            <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
-              Get a Free Consulting
-            </button></a>
+              <button class="bg-primary hover:bg-primary/90 text-white py-2 px-6 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+                Start Your Project
+              </button>
+            </a>
             <a href="https://drive.google.com/uc?export=download&id=11_uVnnNilxCY1J0r-LEaWMRkx75rpbqw">
-            <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
-              Download Brochure
-            </button></a>
+              <button class="bg-gray-100 hover:bg-gray-200 text-gray-800 py-2 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap hover:scale-105 hover:shadow-lg hover:-translate-y-1">
+                Download Brochure
+              </button>
+            </a>
           </div>
         </div>
       </div>
-      
-      <!-- Desktop: Logo at Right (hidden on mobile) -->
+
+      <!-- Right: Floating Logo (desktop only) -->
       <div class="hidden md:flex md:w-1/2 justify-end">
-        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
-             alt="Pixapine" 
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png"
+             alt="Pixapine"
              class="w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] xl:w-[32rem] xl:h-[32rem] object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
              style="transform-style: preserve-3d; margin-right: -5%; animation: float1 6s ease-in-out infinite;">
       </div>
+
     </div>
   </div>
 </section>
-<!-- Services Section -->
-<section id="services" class="py-20 bg-gray-50 relative">
-<div class="particles">
-<div class="particle" style="width: 15px; height: 15px; top: 10%; left: 45%; opacity: 0.3; animation-delay: 0s;"></div>
-<div class="particle" style="width: 20px; height: 20px; top: 20%; left: 25%; opacity: 0.2; animation-delay: 2s;"></div>
-<div class="particle" style="width: 25px; height: 25px; top: 30%; left: 75%; opacity: 0.1; animation-delay: 4s;"></div>
-<div class="particle" style="width: 10px; height: 10px; top: 60%; left: 15%; opacity: 0.2; animation-delay: 6s;"></div>
-<div class="particle" style="width: 18px; height: 18px; top: 70%; left: 85%; opacity: 0.15; animation-delay: 8s;"></div>
-</div>
-<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Our Services</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">We offer comprehensive digital marketing solutions tailored to your business needs, helping you achieve sustainable growth in the digital landscape.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Service 1 -->
-<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-layout-4-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Website Designing</h3>
-<p class="text-gray-600 mb-6">Custom-designed, responsive websites that engage visitors and convert them into customers.</p>
-<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
-Learn More <i class="ri-arrow-right-line ml-2"></i>
-</button>
-</div>
-<!-- Service 2 -->
-<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-search-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">SEO</h3>
-<p class="text-gray-600 mb-6">Data-driven SEO strategies that improve your search rankings and drive organic traffic to your website.</p>
-<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
-Learn More <i class="ri-arrow-right-line ml-2"></i>
-</button>
-</div>
-<!-- Service 3 -->
-<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-global-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Social Media Marketing</h3>
-<p class="text-gray-600 mb-6">Strategic social media campaigns that build brand awareness and foster meaningful customer relationships.</p>
-<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
-Learn More <i class="ri-arrow-right-line ml-2"></i>
-</button>
-</div>
-<!-- Service 4 -->
-<div class="service-card bg-white rounded-lg shadow-md p-8 flex flex-col items-center text-center">
-<div class="service-icon w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-movie-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Video Editing</h3>
-<p class="text-gray-600 mb-6">Professional video production and editing services that tell your brand story and captivate your audience.</p>
-<button class="mt-auto text-primary hover:text-primary/80 font-medium flex items-center transition-colors whitespace-nowrap">
-Learn More <i class="ri-arrow-right-line ml-2"></i>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- Why Choose Us Section -->
-<section id="why-choose" class="py-20 bg-white relative">
-<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Why Choose Pixapine</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">We combine creativity, strategy, and technology to deliver exceptional results that help your business thrive in the digital world.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Reason 1 -->
-<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
-<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-team-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Expert Team</h3>
-<p class="text-gray-600">Our team of digital marketing specialists brings years of industry experience and a passion for innovation to every project.</p>
-</div>
-<!-- Reason 2 -->
-<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
-<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-rocket-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Innovative Solutions</h3>
-<p class="text-gray-600">We stay ahead of industry trends and technologies to deliver cutting-edge digital marketing solutions that give you a competitive edge.</p>
-</div>
-<!-- Reason 3 -->
-<div class="bg-gray-50 rounded-lg p-8 hover:shadow-lg transition-all duration-300">
-<div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-<i class="ri-line-chart-line ri-2x text-primary"></i>
-</div>
-<h3 class="text-xl font-semibold mb-4">Data-Driven Approach</h3>
-<p class="text-gray-600">We leverage analytics and insights to make informed decisions and optimize your digital marketing campaigns for maximum ROI.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Portfolio Section -->
-<section id="portfolio" class="py-20 bg-gray-50">
-<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">Our Portfolio</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Explore our successful projects that have helped businesses achieve their digital marketing goals.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Portfolio Item 1 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=modern%20e-commerce%20website%20design%2C%20clean%20layout%2C%20professional%20product%20photography%2C%20minimalist%20navigation%2C%20high-end%20fashion%20store%20website%20screenshot%20on%20desktop%2C%20UI%2FUX%20design%2C%20online%20shopping%20interface%2C%20digital%20marketing%20project&width=600&height=400&seq=12346&orientation=landscape" alt="E-commerce Website" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">Luxe Fashion E-commerce</h3>
-<p class="text-gray-600 mb-4">A premium online shopping experience with seamless checkout and personalized recommendations.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Web Design</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">E-commerce</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">SEO</span>
-</div>
-</div>
-</div>
-<!-- Portfolio Item 2 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=social%20media%20marketing%20campaign%20for%20a%20fitness%20brand%2C%20instagram%20post%20mockups%2C%20facebook%20ads%2C%20engagement%20metrics%20dashboard%2C%20digital%20marketing%20analytics%2C%20campaign%20performance%20visualization%2C%20professional%20marketing%20strategy%20presentation&width=600&height=400&seq=12347&orientation=landscape" alt="Social Media Campaign" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">FitLife Social Campaign</h3>
-<p class="text-gray-600 mb-4">A multi-platform social media campaign that increased brand engagement by 187% in three months.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Social Media</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Content Strategy</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Analytics</span>
-</div>
-</div>
-</div>
-<!-- Portfolio Item 3 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=professional%20video%20production%20for%20corporate%20brand%2C%20video%20editing%20project%2C%20cinematic%20quality%2C%20professional%20lighting%2C%20high-end%20camera%20work%2C%20storytelling%20through%20video%2C%20digital%20marketing%20video%20campaign%2C%20promotional%20video&width=600&height=400&seq=12348&orientation=landscape" alt="Video Production" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">TechVision Brand Video</h3>
-<p class="text-gray-600 mb-4">A compelling brand story video that helped launch a new tech product and generated over 500K views.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Video Production</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Editing</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Brand Storytelling</span>
-</div>
-</div>
-</div>
-<!-- Portfolio Item 4 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=SEO%20optimization%20project%2C%20search%20engine%20results%20page%2C%20keyword%20research%20dashboard%2C%20analytics%20graphs%20showing%20traffic%20growth%2C%20website%20ranking%20improvement%20visualization%2C%20digital%20marketing%20SEO%20strategy%2C%20professional%20data%20visualization&width=600&height=400&seq=12349&orientation=landscape" alt="SEO Project" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">GreenEco SEO Overhaul</h3>
-<p class="text-gray-600 mb-4">A comprehensive SEO strategy that improved organic traffic by 215% and first-page rankings for 28 key terms.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">SEO</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Content Marketing</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Analytics</span>
-</div>
-</div>
-</div>
-<!-- Portfolio Item 5 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=restaurant%20website%20design%2C%20elegant%20food%20photography%2C%20online%20menu%20interface%2C%20reservation%20system%2C%20modern%20restaurant%20branding%2C%20digital%20marketing%20for%20hospitality%2C%20responsive%20website%20design%20for%20restaurant%2C%20professional%20web%20design&width=600&height=400&seq=12350&orientation=landscape" alt="Restaurant Website" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">Saveur Restaurant Website</h3>
-<p class="text-gray-600 mb-4">A mouth-watering website with online reservation system that increased bookings by 78%.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Web Design</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">UX/UI</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Photography</span>
-</div>
-</div>
-</div>
-<!-- Portfolio Item 6 -->
-<div class="portfolio-item rounded-lg overflow-hidden shadow-md bg-white">
-<div class="relative overflow-hidden h-64">
-<img src="https://readdy.ai/api/search-image?query=mobile%20app%20UI%20design%2C%20user%20interface%20mockups%2C%20app%20screens%2C%20mobile%20application%20development%2C%20digital%20marketing%20for%20mobile%20apps%2C%20user%20experience%20design%2C%20professional%20app%20design%2C%20clean%20modern%20interface&width=600&height=400&seq=12351&orientation=landscape" alt="Mobile App Design" class="portfolio-img w-full h-full object-cover object-top">
-<div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
-<a href="https://example.com" target="_blank" class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
-Visit Site
-</a>
-</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-semibold mb-2">WanderGuide Travel App</h3>
-<p class="text-gray-600 mb-4">An intuitive travel app with personalized recommendations and seamless booking experience.</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">App Design</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">UX/UI</span>
-<span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">Development</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Testimonials Section -->
-<section id="testimonials" class="py-20 bg-white">
-<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4">What Our Clients Say</h2>
-<p class="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our clients have to say about working with Pixapine.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Testimonial 1 -->
-<div class="testimonial-card w-full px-4">
-<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
-<div class="flex items-center mb-6">
-<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20woman%2C%20corporate%20portrait%2C%20confident%20female%20executive%2C%2040s%2C%20business%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12352&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
-</div>
-<div>
-<h4 class="text-lg font-semibold">Emily Richardson</h4>
-<p class="text-gray-600">Marketing Director, Luxe Fashion</p>
-</div>
-<div class="ml-auto text-primary">
-<i class="ri-double-quotes-l ri-3x opacity-20"></i>
-</div>
-</div>
-<p class="text-gray-700 mb-6">"Pixapine transformed our digital presence completely. Their strategic approach to SEO and social media marketing has resulted in a 215% increase in online sales within just six months. Their team is responsive, creative, and truly invested in our success."</p>
-<div class="flex text-yellow-400">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-</div>
-</div>
-</div>
-<!-- Testimonial 2 -->
-<div class="testimonial-card w-full px-4">
-<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
-<div class="flex items-center mb-6">
-<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20man%2C%20corporate%20portrait%2C%20confident%20male%20executive%2C%2030s%2C%20business%20casual%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12353&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
-</div>
-<div>
-<h4 class="text-lg font-semibold">Michael Thompson</h4>
-<p class="text-gray-600">CEO, TechVision</p>
-</div>
-<div class="ml-auto text-primary">
-<i class="ri-double-quotes-l ri-3x opacity-20"></i>
-</div>
-</div>
-<p class="text-gray-700 mb-6">"Working with Pixapine on our product launch video was a game-changer. Their creativity and attention to detail resulted in a video that perfectly captured our brand essence. The video generated over 500K views and significantly boosted our product awareness."</p>
-<div class="flex text-yellow-400">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-</div>
-</div>
-</div>
-<!-- Testimonial 3 -->
-<div class="testimonial-card w-full px-4">
-<div class="bg-gray-50 rounded-lg p-8 shadow-sm">
-<div class="flex items-center mb-6">
-<div class="w-16 h-16 rounded-full overflow-hidden mr-4">
-<img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20business%20woman%2C%20corporate%20portrait%2C%20confident%20female%20entrepreneur%2C%2050s%2C%20business%20professional%20attire%2C%20neutral%20background%2C%20high%20quality%20professional%20photography&width=200&height=200&seq=12354&orientation=squarish" alt="Client" class="w-full h-full object-cover object-top">
-</div>
-<div>
-<h4 class="text-lg font-semibold">Sarah Johnson</h4>
-<p class="text-gray-600">Owner, Saveur Restaurant</p>
-</div>
-<div class="ml-auto text-primary">
-<i class="ri-double-quotes-l ri-3x opacity-20"></i>
-</div>
-</div>
-<p class="text-gray-700 mb-6">"The website Pixapine designed for our restaurant has been a complete game-changer. Not only is it visually stunning, but the online reservation system has increased our bookings by 78%. Their team took the time to understand our brand and translated it perfectly online."</p>
-<div class="flex text-yellow-400">
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-fill"></i>
-<i class="ri-star-half-fill"></i>
-</div>
-</div>
-</div>
-</div>
-<div class="flex justify-center mt-8">
 
-</div>
-</div>
-</section>
-<!-- About Us Section -->
-<section id="about" class="py-20 bg-gray-50">
-<div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
-<div class="flex flex-col lg:flex-row items-center gap-12">
-<div class="w-full lg:w-1/2">
-<h2 class="text-4xl font-bold mb-6">About Pixapine</h2>
-<p class="text-gray-700 mb-6">Pixapine is a full-service digital marketing agency dedicated to helping businesses thrive in the digital landscape. We combine creativity, strategy, and technology to create compelling digital experiences that connect brands with their target audience.</p>
-<p class="text-gray-700 mb-8">Our team of passionate experts is committed to delivering innovative, results-driven solutions that help our clients achieve sustainable growth through strategic digital marketing initiatives.</p>
-<div class="grid grid-cols-2 gap-6">
-<div>
-<div class="flex items-center mb-2">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Strategic Approach</span>
-</div>
-<div class="flex items-center mb-2">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Creative Excellence</span>
-</div>
-<div class="flex items-center">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Technical Expertise</span>
-</div>
-</div>
-<div>
-<div class="flex items-center mb-2">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Client-Centric Focus</span>
-</div>
-<div class="flex items-center mb-2">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Measurable Results</span>
-</div>
-<div class="flex items-center">
-<div class="w-6 h-6 flex items-center justify-center mr-2 text-primary">
-<i class="ri-check-line"></i>
-</div>
-<span class="text-gray-700 font-medium">Continuous Innovation</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Mobile: Logo at Top (smaller size) -->
-<div class="flex md:hidden justify-center mb-8">
-  <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
-       alt="Pixapine" 
-       class="w-48 h-48 object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
-       style="transform-style: preserve-3d;">
-</div>
 
-<!-- Desktop: Logo at Right (original size) -->
-<div class="hidden md:flex md:w-1/2 justify-end">
-  <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png" 
-       alt="Pixapine" 
-       class="w-80 h-80 object-contain hover:scale-105  hover:rotate-6 transition-all duration-500"
-       style="transform-style: preserve-3d; margin-right: -5%;">
-</div>
-</div>
-</div>
+<!-- ============================================================
+  SECTION 3: SERVICES
+  - What the company produces (4 cards), lift on hover
+  ============================================================ -->
+<section id="services" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-4xl font-bold mb-4">What We Produce</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Ad films, industry videos and brand collaborations. That is all we do, and we do it well.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <div class="service-card bg-white rounded-lg shadow-sm p-8 flex flex-col items-center text-center reveal reveal-delay-1">
+        <div class="service-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Commercial Ad Films</h3>
+        <p class="text-gray-600">Concept-led TV and digital commercials, shot cinematically and built to sell.</p>
+      </div>
+
+      <div class="service-card bg-white rounded-lg shadow-sm p-8 flex flex-col items-center text-center reveal reveal-delay-2">
+        <div class="service-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary" aria-hidden="true"><path d="M2 20V10l6 4v-4l6 4V4h6v16z"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Industry Videos</h3>
+        <p class="text-gray-600">Corporate and industrial films that present your business with clarity and craft.</p>
+      </div>
+
+      <div class="service-card bg-white rounded-lg shadow-sm p-8 flex flex-col items-center text-center reveal reveal-delay-3">
+        <div class="service-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Brand Collaborations</h3>
+        <p class="text-gray-600">Films made with and for brands, creators and talent, from idea to final cut.</p>
+      </div>
+
+      <div class="service-card bg-white rounded-lg shadow-sm p-8 flex flex-col items-center text-center reveal reveal-delay-4">
+        <div class="service-icon w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Product & Launch Films</h3>
+        <p class="text-gray-600">Product films and launch spots that give every release a strong first impression.</p>
+      </div>
+
+    </div>
+  </div>
 </section>
-<!-- Contact Section -->
-<!-- Contact Section -->
-<section id="contact" class="py-20 bg-white">
+
+
+<!-- ============================================================
+  SECTION 4: PORTFOLIO
+  - 3-column grid of selected work with hover overlay
+  - NOTE: replace the placeholder titles/images with real projects
+  ============================================================ -->
+<section id="portfolio" class="py-20 bg-white">
+  <div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-4xl font-bold mb-4">Selected Work</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        A look at the kind of films we make for brands and industries.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=cinematic%20car%20commercial%2C%20sleek%20car%20on%20empty%20road%20at%20golden%20hour%2C%20professional%20film%20lighting%2C%20shallow%20depth%20of%20field%2C%20minimal%20clean%20composition&width=600&height=400&seq=22101&orientation=landscape"
+               alt="Premium Automotive Commercial" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Commercial Ad Film</p>
+          <h3 class="text-lg font-semibold">Premium Automotive Commercial</h3>
+        </div>
+      </div>
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=cinematic%20lifestyle%20brand%20advertisement%2C%20product%20on%20clean%20studio%20set%2C%20soft%20lighting%2C%20film%20crew%20behind%20camera%2C%20minimal%20elegant%20style&width=600&height=400&seq=22102&orientation=landscape"
+               alt="Consumer Brand Campaign Film" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Commercial Ad Film</p>
+          <h3 class="text-lg font-semibold">Consumer Brand Campaign Film</h3>
+        </div>
+      </div>
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=industrial%20factory%20corporate%20film%2C%20cinematic%20wide%20shot%20of%20modern%20manufacturing%20floor%2C%20clean%20professional%20lighting%2C%20minimal%20style&width=600&height=400&seq=22103&orientation=landscape"
+               alt="Manufacturing Industry Film" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Industry Video</p>
+          <h3 class="text-lg font-semibold">Manufacturing Industry Film</h3>
+        </div>
+      </div>
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=corporate%20brand%20film%20shoot%2C%20executive%20interview%20setup%20with%20cinema%20camera%20and%20soft%20key%20light%2C%20clean%20modern%20office%2C%20minimal&width=600&height=400&seq=22104&orientation=landscape"
+               alt="Founder & Corporate Story" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Industry Video</p>
+          <h3 class="text-lg font-semibold">Founder & Corporate Story</h3>
+        </div>
+      </div>
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=brand%20collaboration%20video%20shoot%2C%20creator%20and%20brand%20product%20on%20set%2C%20cinema%20camera%20and%20lighting%2C%20clean%20bright%20minimal%20studio&width=600&height=400&seq=22105&orientation=landscape"
+               alt="Brand x Creator Collaboration" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Brand Collaboration</p>
+          <h3 class="text-lg font-semibold">Brand x Creator Collaboration</h3>
+        </div>
+      </div>
+
+      <div class="portfolio-item rounded-lg overflow-hidden shadow-sm bg-white">
+        <div class="relative overflow-hidden h-64">
+          <img src="https://readdy.ai/api/search-image?query=product%20launch%20film%2C%20premium%20product%20hero%20shot%20on%20dark%20reflective%20surface%2C%20dramatic%20cinematic%20lighting%2C%20minimal%20composition&width=600&height=400&seq=22106&orientation=landscape"
+               alt="Product Launch Spot" class="portfolio-img w-full h-full object-cover object-center">
+          <div class="portfolio-overlay absolute inset-0 flex items-center justify-center">
+            <a href="#contact"
+               class="bg-white text-primary py-2 px-6 !rounded-button font-medium hover:bg-white/90 transition-all duration-300 whitespace-nowrap">
+              Enquire
+            </a>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-xs uppercase tracking-widest text-primary mb-2">Product Film</p>
+          <h3 class="text-lg font-semibold">Product Launch Spot</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SECTION 5: PROCESS
+  - 4 simple numbered steps
+  ============================================================ -->
+<section id="process" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-4xl font-bold mb-4">How We Work</h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        A clear, simple process from the first conversation to the final film.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <div class="reveal reveal-delay-1">
+        <p class="text-4xl font-semibold text-primary/30 mb-4">01</p>
+        <h3 class="text-lg font-semibold mb-2">Brief</h3>
+        <p class="text-gray-600">We listen to your brand, audience and goals.</p>
+      </div>
+
+      <div class="reveal reveal-delay-2">
+        <p class="text-4xl font-semibold text-primary/30 mb-4">02</p>
+        <h3 class="text-lg font-semibold mb-2">Concept & Pre-production</h3>
+        <p class="text-gray-600">Script, storyboard, casting, locations and schedule.</p>
+      </div>
+
+      <div class="reveal reveal-delay-3">
+        <p class="text-4xl font-semibold text-primary/30 mb-4">03</p>
+        <h3 class="text-lg font-semibold mb-2">Production</h3>
+        <p class="text-gray-600">A focused crew and cinema-grade equipment on set.</p>
+      </div>
+
+      <div class="reveal reveal-delay-4">
+        <p class="text-4xl font-semibold text-primary/30 mb-4">04</p>
+        <h3 class="text-lg font-semibold mb-2">Delivery</h3>
+        <p class="text-gray-600">Final film, graded and mastered for TV, digital and screens.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SECTION 7: ABOUT US
+  - Gray background
+  - Left: text content + checklist of values
+  - Right: floating Pixapine logo image
+  ============================================================ -->
+<section id="about" class="py-20 bg-white">
+  <div class="container mx-auto px-5 lg:px-24" style="max-width: 1600px;">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+
+      <!-- Left: About Text -->
+      <div class="w-full lg:w-1/2">
+        <h2 class="text-4xl font-bold mb-6 reveal">About Pixapine</h2>
+        <p class="text-gray-700 mb-6">
+          Pixapine is an ad film production company. We make commercial ad films, industry videos
+          and brand collaboration films, taking each project from first idea to final cut.
+        </p>
+        <p class="text-gray-700 mb-8">
+          We keep our focus narrow on purpose. Every film is planned carefully, shot with care and
+          finished to the standard your brand deserves.
+        </p>
+
+        <!-- Values checklist — two columns -->
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <div class="flex items-center mb-2">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">Concept-Led Ideas</span>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">Cinematic Craft</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">Professional Crew</span>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center mb-2">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">Brand-First Focus</span>
+            </div>
+            <div class="flex items-center mb-2">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">On-Time Delivery</span>
+            </div>
+            <div class="flex items-center">
+              <div class="w-6 h-6 flex items-center justify-center mr-2 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <span class="text-gray-700 font-medium">Clear Communication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Logo image (mobile: shown at top; desktop: shown on right) -->
+      <!-- Mobile logo (above text on small screens) -->
+      <div class="flex md:hidden justify-center mb-8">
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png"
+             alt="Pixapine"
+             class="w-48 h-48 object-contain hover:scale-110 hover:rotate-6 transition-all duration-500"
+             style="transform-style: preserve-3d;">
+      </div>
+      <!-- Desktop logo (right side) -->
+      <div class="hidden md:flex md:w-1/2 justify-end">
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d639772ca15d17f5b5da8c6229a798a8.png"
+             alt="Pixapine"
+             class="w-80 h-80 object-contain hover:scale-105 hover:rotate-6 transition-all duration-500"
+             style="transform-style: preserve-3d; margin-right: -5%;">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+  SECTION 8: CONTACT
+  - White background
+  - Left: Netlify contact form (name, email, subject, message)
+  - Right: contact image + email link
+  - Form uses floating labels (JS-powered, see script below)
+  - Netlify handles form submission + spam protection
+  ============================================================ -->
+<section id="contact" class="py-20 bg-gray-50">
   <div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
+
+    <!-- Section Heading -->
     <div class="text-center mb-16">
       <h2 class="text-4xl font-bold mb-4">Get In Touch</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto">Ready to transform your digital presence? Contact us today to discuss how we can help your business grow.</p>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Have a brand story to tell? Share your idea and we will get back to you.
+      </p>
     </div>
+
     <div class="flex flex-col lg:flex-row gap-12">
+
+      <!-- Left: Contact Form -->
       <div class="w-full lg:w-1/2">
-        <!-- Netlify Form -->
-        <form 
-          name="contact" 
-          method="POST" 
-          data-netlify="true" 
-          netlify-honeypot="bot-field" 
-          action="/thanks" 
-          class="space-y-6"
-        >
-          <!-- Hidden honeypot field for spam protection -->
+        <!--
+          Netlify Form Setup:
+          - data-netlify="true"      → tells Netlify to process this form
+          - netlify-honeypot          → hidden field to catch spam bots
+          - action="/thanks"          → redirect after successful submission
+        -->
+        <form name="contact" method="POST" data-netlify="true"
+              netlify-honeypot="bot-field" action="/thanks" class="space-y-6">
+
+          <!-- Required hidden field for Netlify -->
           <input type="hidden" name="form-name" value="contact">
+          <!-- Honeypot spam trap (hidden from real users) -->
           <div class="hidden">
-            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            <label>Don't fill this out if you're human: <input name="bot-field"></label>
           </div>
-          
+
+          <!-- Name -->
           <div class="relative">
-            <input type="text" id="name" name="name" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <input type="text" id="name" name="name" placeholder=" " required
+                   class="w-full px-4 py-3 bg-white rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
             <label for="name" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Name</label>
           </div>
+          <!-- Email -->
           <div class="relative">
-            <input type="email" id="email" name="email" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <input type="email" id="email" name="email" placeholder=" " required
+                   class="w-full px-4 py-3 bg-white rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
             <label for="email" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Email</label>
           </div>
+          <!-- Subject -->
           <div class="relative">
-            <input type="text" id="subject" name="subject" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required>
+            <input type="text" id="subject" name="subject" placeholder=" " required
+                   class="w-full px-4 py-3 bg-white rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700">
             <label for="subject" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Subject</label>
           </div>
+          <!-- Message -->
           <div class="relative">
-            <textarea id="message" name="message" rows="5" placeholder=" " class="w-full px-4 py-3 bg-gray-50 rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder=" " required
+                      class="w-full px-4 py-3 bg-white rounded border-none focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 text-gray-700"></textarea>
             <label for="message" class="form-label absolute left-4 top-3 text-gray-500 pointer-events-none">Your Message</label>
           </div>
 
-          <button type="submit" class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
+          <button type="submit"
+                  class="bg-primary hover:bg-primary/90 text-white py-3 px-8 !rounded-button font-medium transition-all duration-300 whitespace-nowrap">
             Send Message
           </button>
         </form>
       </div>
+
+      <!-- Right: Image + Email -->
       <div class="w-full lg:w-1/2">
         <div class="flex justify-center mb-8">
-          <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png" alt="Contact Us" class="w-64 h-64 object-contain hover:scale-105 transition-all duration-500">
+          <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/680c245b434872d5207d8deab6d3b88a.png"
+               alt="Contact Us" class="w-64 h-64 object-contain hover:scale-105 transition-all duration-500">
         </div>
         <div class="flex items-start justify-center">
           <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 mt-1">
-            <a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]">
-              <i class="ri-mail-line text-primary ri-xl"></i>
+            <a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-primary" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             </a>
           </div>
           <div>
@@ -828,131 +939,345 @@ Visit Site
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
-<!-- Footer -->
+
+
+<!-- ============================================================
+  FOOTER
+  - Dark background
+  - Logo on left, social icons on right
+  ============================================================ -->
 <footer class="bg-gray-900 text-white py-5">
-<div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
-<div class="flex flex-col md:flex-row justify-between items-center mb-8">
-<a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
-<img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png" alt="Pixapine" class="h-10">
-</a>
-<div class="flex space-x-4">
-<a href="https://www.linkedin.com/company/pixapine" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
-<i class="ri-linkedin-fill text-white"></i>
-</a>
-<a href="https://www.instagram.com/pixapine/" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
-<i class="ri-instagram-fill text-white"></i>
-</a>
-<a href="https://www.facebook.com/profile.php?id=61575244541469" class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
-<i class="ri-facebook-fill text-white"></i>
-</a>
-<a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services.%0D%0A%0D%0A[Please provide more details about your project here]"class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
-<i class="ri-mail-fill text-white"></i>
-</a>
-</div>
-</div>
-</div>
+  <div class="container mx-auto px-16 lg:px-24" style="max-width: 1600px;">
+    <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+
+      <!-- Footer Logo -->
+      <a href="#" class="flex items-center transition-transform duration-300 hover:scale-110">
+        <img src="https://static.readdy.ai/image/7a2b4b3b080d9767ac61b88204a53755/d5250671d739af602d3932a1c79053ea.png"
+             alt="Pixapine" class="h-10">
+      </a>
+
+      <!-- Social Links -->
+      <div class="flex space-x-4">
+        <a href="https://www.linkedin.com/company/pixapine"
+           class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="w-5 h-5 text-white" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9.75h4V21H3zM9.75 9.75h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.75 2.63 4.75 6.05V21h-4v-4.93c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21h-4z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/pixapine/"
+           class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61575244541469"
+           class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="w-5 h-5 text-white" aria-hidden="true"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.5V13h2.8v8z"/></svg>
+        </a>
+        <a href="mailto:pixapine@gmail.com?subject=Service Inquiry&body=Hi Pixapine,%0D%0A%0D%0AWe are interested in your services."
+           class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary flex items-center justify-center transition-all duration-300 social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-white" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
 </footer>
+
+
+<!-- ============================================================
+  JAVASCRIPT
+  All scripts in a single DOMContentLoaded block.
+
+  Features:
+  1. Mobile menu toggle
+  2. Smooth scroll for anchor links
+  3. Scroll-triggered fade-in animations (IntersectionObserver)
+  4. Animated number counters
+  5. Floating label behavior for contact form
+  6. Button hover lift
+
+  Enhancements (Step 2):
+  A. Custom cursor — dot + lagging ring, grows on hover
+  B. Scroll progress bar — fills as user scrolls
+  C. Navbar scroll effect — solidifies on scroll
+  D. Typewriter — hero tagline types out on load
+  E. Reveal on scroll — section elements slide in
+  F. Active nav highlight — tracks current section
+  G. Back-to-top button — appears after 400px scroll
+  ============================================================ -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Intersection Observer for animations
-  const observer = new IntersectionObserver((entries) => {
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── 1. Mobile Menu Toggle ────────────────────────────────── */
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuButton.addEventListener('click', function () {
+    mobileMenu.classList.toggle('hidden');
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    const iconWrap = document.getElementById('menu-icon');
+    const attrs = 'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6" aria-hidden="true"';
+    iconWrap.innerHTML = '<svg ' + attrs + '>' + (isOpen
+      ? '<path d="M18 6L6 18M6 6l12 12"/>'
+      : '<path d="M3 6h18M3 12h18M3 18h18"/>') + '</svg>';
+  });
+
+
+  /* ── 2. Smooth Scroll ─────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+      }
+    });
+  });
+
+
+  /* ── 3. Scroll-Triggered Fade-In (legacy observer) ────────── */
+  const animObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate-fadeInUp');
-        observer.unobserve(entry.target);
+        animObserver.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    section.querySelectorAll('.portfolio-item, .testimonial-card')
+      .forEach((el, index) => {
+        el.style.opacity = '0';
+        el.style.animationDelay = `${index * 0.1}s`;
+        animObserver.observe(el);
+      });
   });
 
-  // Observe all sections
-  document.querySelectorAll('section').forEach(section => {
-    const elements = section.querySelectorAll('.service-card, .portfolio-item, .testimonial-card, h2, p');
-    elements.forEach((el, index) => {
-      el.style.opacity = '0';
-      el.style.animationDelay = `${index * 0.1}s`;
-      observer.observe(el);
+
+  /* ── 4. Animated Number Counters ─────────────────────────── */
+  document.querySelectorAll('.stat-counter').forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    const increment = target / 200;
+    let count = 0;
+    const tick = () => {
+      if (count < target) {
+        count += increment;
+        counter.innerText = Math.ceil(count);
+        setTimeout(tick, 1);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    tick();
+  });
+
+
+  /* ── 5. Floating Form Labels ──────────────────────────────── */
+  document.querySelectorAll('input, textarea').forEach(input => {
+    const label = input.nextElementSibling;
+    if (!label) return;
+    if (input.value) {
+      label.style.transform = 'translateY(-20px) scale(0.8)';
+      label.style.color = '#3B64EA';
+    }
+    input.addEventListener('focus', () => {
+      label.style.transform = 'translateY(-20px) scale(0.8)';
+      label.style.color = '#3B64EA';
+    });
+    input.addEventListener('blur', () => {
+      if (!input.value) {
+        label.style.transform = '';
+        label.style.color = '';
+      }
     });
   });
 
-  // Add hover animations to buttons
+
+  /* ── 6. Button Hover Lift ─────────────────────────────────── */
   document.querySelectorAll('button').forEach(button => {
-    button.addEventListener('mouseenter', (e) => {
+    button.addEventListener('mouseenter', e => {
       e.target.style.transform = 'translateY(-3px)';
       e.target.style.transition = 'all 0.3s ease';
     });
-    button.addEventListener('mouseleave', (e) => {
+    button.addEventListener('mouseleave', e => {
       e.target.style.transform = 'translateY(0)';
     });
   });
-// Animated Counter
-const counters = document.querySelectorAll('.stat-counter');
-const speed = 200;
-counters.forEach(counter => {
-const target = +counter.getAttribute('data-target');
-const increment = target / speed;
-let count = 0;
-const updateCount = () => {
-if (count < target) {
-count += increment;
-counter.innerText = Math.ceil(count);
-setTimeout(updateCount, 1);
-} else {
-counter.innerText = target;
-}
-};
-updateCount();
-});
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Remove testimonial slider code as it's no longer needed
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Form label animation
-const formInputs = document.querySelectorAll('input, textarea');
-formInputs.forEach(input => {
-// Check initial state
-if (input.value) {
-const label = input.nextElementSibling;
-label.style.transform = 'translateY(-20px) scale(0.8)';
-label.style.color = '#3B64EA';
-}
-// Focus event
-input.addEventListener('focus', () => {
-const label = input.nextElementSibling;
-label.style.transform = 'translateY(-20px) scale(0.8)';
-label.style.color = '#3B64EA';
-});
-// Blur event
-input.addEventListener('blur', () => {
-const label = input.nextElementSibling;
-if (!input.value) {
-label.style.transform = '';
-label.style.color = '';
-}
-});
-});
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function(e) {
-e.preventDefault();
-const targetId = this.getAttribute('href');
-if (targetId === '#') return;
-const targetElement = document.querySelector(targetId);
-if (targetElement) {
-window.scrollTo({
-top: targetElement.offsetTop - 80,
-behavior: 'smooth'
-});
-}
-});
-});
+
+
+  /* ── ENHANCEMENT A: Custom Cursor ────────────────────────────
+     Dot snaps to mouse position instantly.
+     Ring lerps (linear interpolates) toward dot position
+     every animation frame, creating a smooth lag effect.      */
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  // Only activate on devices with a real mouse (not touch/mobile)
+  if (window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0;
+    let ringX  = 0, ringY  = 0;
+
+    // Track exact mouse position for the dot
+    document.addEventListener('mousemove', e => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX + 'px';
+      dot.style.top  = mouseY + 'px';
+    });
+
+    // Ring follows with lerp smoothing (speed: 0.12 = slightly laggy)
+    function animateRing() {
+      ringX += (mouseX - ringX) * 0.12;
+      ringY += (mouseY - ringY) * 0.12;
+      ring.style.left = ringX + 'px';
+      ring.style.top  = ringY + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Grow ring when hovering interactive elements
+    const hoverTargets = 'a, button, .service-card, .portfolio-item, input, textarea';
+    document.querySelectorAll(hoverTargets).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.classList.add('cursor-grow');
+        dot.classList.add('cursor-grow');
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.classList.remove('cursor-grow');
+        dot.classList.remove('cursor-grow');
+      });
+    });
+  }
+
+
+  /* ── ENHANCEMENT B: Scroll Progress Bar ──────────────────────
+     Calculates how far down the page the user has scrolled
+     as a percentage and sets the bar width accordingly.       */
+  const progressBar = document.getElementById('scroll-progress');
+
+  function updateProgress() {
+    const scrollTop    = window.scrollY;
+    const docHeight    = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled     = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+
+  /* ── ENHANCEMENT C: Navbar Solidifies on Scroll ──────────────
+     Adds .nav-scrolled to make the navbar fully opaque
+     once the user scrolls past 20px.                         */
+  const mainNav = document.getElementById('main-nav');
+
+  function updateNav() {
+    if (window.scrollY > 20) {
+      mainNav.classList.add('nav-scrolled');
+    } else {
+      mainNav.classList.remove('nav-scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+
+
+  /* ── ENHANCEMENT D: Typewriter Hero Tagline ──────────────────
+     Types out two lines of text into #hero-tagline.
+     Line 1 types fully, then line 2 types with blue span.
+     Cursor blink class removed when done.                     */
+  const taglineEl = document.getElementById('hero-tagline');
+  const line1 = 'Stories Worth Watching';
+  const line2 = 'Films Brands Remember';
+  let charIndex = 0;
+  let onLine2   = false;
+
+  taglineEl.classList.add('typewriter-cursor');
+
+  function typeChar() {
+    if (!onLine2) {
+      // Typing line 1
+      if (charIndex < line1.length) {
+        taglineEl.innerHTML = line1.slice(0, ++charIndex) + '<br><span class="text-primary"></span>';
+        setTimeout(typeChar, 55);
+      } else {
+        // Pause then start line 2
+        onLine2    = true;
+        charIndex  = 0;
+        setTimeout(typeChar, 400);
+      }
+    } else {
+      // Typing line 2 (inside the blue span)
+      if (charIndex < line2.length) {
+        taglineEl.innerHTML = line1 + '<br><span class="text-primary">' + line2.slice(0, ++charIndex) + '</span>';
+        setTimeout(typeChar, 55);
+      } else {
+        // Done — remove blinking cursor
+        taglineEl.classList.remove('typewriter-cursor');
+      }
+    }
+  }
+  // Small delay before typing starts so page has rendered
+  setTimeout(typeChar, 600);
+
+
+  /* ── ENHANCEMENT E: Reveal on Scroll ─────────────────────────
+     IntersectionObserver watches all .reveal elements.
+     When 15% of the element enters the viewport,
+     .revealed is added which triggers the CSS slide-in.      */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+  /* ── ENHANCEMENT F: Active Nav Link Highlight ────────────────
+     Uses IntersectionObserver to detect which section
+     is currently most visible and highlights its nav link.   */
+  const sections  = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-link[href^="#"]');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('nav-active');
+          if (link.getAttribute('href') === '#' + id) {
+            link.classList.add('nav-active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(section => sectionObserver.observe(section));
+
+
+  /* ── ENHANCEMENT G: Back-to-Top Button ───────────────────────
+     Shows the button after user scrolls 400px down.
+     Clicking it scrolls smoothly back to the top.           */
+  const backToTop = document.getElementById('back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTop.classList.add('visible');
+    } else {
+      backToTop.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
 });
 </script>
 </body>
